@@ -1,11 +1,12 @@
 import React from 'react'
+import Headings from '../utils/headings'
 
 
 class Overview extends React.Component {
     render() {
         return (
             <div>
-                Overview
+                <Headings data="Overview"/>
             </div>
         );
     }
