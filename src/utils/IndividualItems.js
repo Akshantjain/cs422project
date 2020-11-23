@@ -1,7 +1,7 @@
 import { Container, IconButton } from '@material-ui/core'
 import { AddCircleOutlineOutlined, InfoOutlined, RemoveCircleOutlineOutlined } from '@material-ui/icons';
 import React, { Component } from 'react'
-import CustomizedDialogs from './CustomizedDialogs';
+import InfoDialog from './InfoDialog';
 
 export class IndividualItems extends Component {
     render() {
@@ -9,16 +9,16 @@ export class IndividualItems extends Component {
             <div>
                 <Container>
                     {this.props.type === "meeting" && 
-                    <div><Meeting data={this.props.data}/></div>}
+                        <div><Meeting {...this.props}/></div>}
 
                     {this.props.type === "reminder" &&
-                    <div><Reminder data={this.props.data}/></div>}
+                        <div><Reminder {...this.props}/></div>}
 
                     {this.props.type === "goal" &&
-                    <div><Goal data={this.props.data}/></div>}
+                        <div><Goal {...this.props} /></div>}
 
                     {this.props.type === "checklist" &&
-                    <div><Checklist data={this.props.data}/></div>}
+                        <div><Checklist {...this.props}/></div>}
                 </Container>
             </div>
         )
@@ -34,6 +34,15 @@ function Reminder(props) {
     const handleClose = () => {
         setOpen(false);
     };
+    const handleEdit = () => {
+        handleClose();
+        props.handleEdit();
+    }
+    const handleDelete = () => {
+        handleClose();
+        props.handleDelete();
+    }
+    
     return(
         <>
             <div className=" individualItem" onClick={handleClickOpen}>
@@ -46,7 +55,7 @@ function Reminder(props) {
                     </span>
                 </p>
             </div>
-            <CustomizedDialogs data={props.data} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
         </>
     );
 }
@@ -60,6 +69,14 @@ function Meeting(props) {
     const handleClose = () => {
         setOpen(false);
     };
+    const handleEdit = () => {
+        handleClose();
+        props.handleEdit();
+    }
+    const handleDelete = () => {
+        handleClose();
+        props.handleDelete();
+    }
 
     return (
         <>
@@ -73,7 +90,7 @@ function Meeting(props) {
                     </span>
                 </p>
             </div>
-            <CustomizedDialogs data={props.data} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
         </>
     );
 }
@@ -87,32 +104,47 @@ function Goal(props) {
     const handleClose = () => {
         setOpen(false);
     };
+    const handleEdit = () => {
+        handleClose();
+        props.handleEdit();
+    }
+    const handleDelete = () => {
+        handleClose();
+        props.handleDelete();
+    }
 
+    const handleIncrease = () => {
+
+    }
+
+    const handleDecrease = () => {
+
+    }
     return (
         <>
-            <div className="individualItem " onClick={handleClickOpen}>
+            <div className="individualItem ">
                 <p className="goal">
                     <span>
                         {props.data.title} {' '}
                         {props.data.type}
                     </span>
                     <span>
-                        <IconButton aria-label="increase" size="small">
+                        <IconButton aria-label="increase" size="small" onClick={handleIncrease}>
                             <AddCircleOutlineOutlined size="small"/>
                         </IconButton>
                         {props.data.current}/{props.data.target}
-                        <IconButton aria-label="decrease" size="small">
+                        <IconButton aria-label="decrease" size="small" onClick={handleDecrease}>
                             <RemoveCircleOutlineOutlined size="small"/>
                         </IconButton>
                     </span>
                     <span>
-                        <IconButton aria-label="increase" size="small">
+                        <IconButton aria-label="increase" size="small" onClick={handleClickOpen}>
                             <InfoOutlined size="small" />
                         </IconButton>
                     </span>
                 </p>
             </div>
-            <CustomizedDialogs data={props.data} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
         </>
     );
 }
@@ -126,13 +158,13 @@ function Checklist(props) {
     const handleClose = () => {
         setOpen(false);
     };
-
     const handleEdit = () => {
-
+        handleClose();
+        props.handleEdit();
     }
-
     const handleDelete = () => {
-
+        handleClose();
+        props.handleDelete();
     }
 
     return (
@@ -142,12 +174,15 @@ function Checklist(props) {
                     <span>
                         {props.data.title}
                     </span>
+
                     <span>
-                        {props.data.time}
+                        <IconButton aria-label="increase" size="small" onClick={handleClickOpen}>
+                            <InfoOutlined size="small" />
+                        </IconButton>
                     </span>
                 </p>
             </div>
-            <CustomizedDialogs data={props.data} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
         </>
     );
 }
