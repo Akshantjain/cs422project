@@ -58,6 +58,10 @@ box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
 cursor: pointer;
 }
 
+.individualItem button {
+  margin: 0px 10px ;
+}
+
 .reminder {
   background-color: #007bff5e;
 }
@@ -68,8 +72,8 @@ cursor: pointer;
 
 .goal {
 background-color: #d8d3ff;
+cursor: grab;
 }
 
 .checklist {
-
 }
