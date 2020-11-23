@@ -5,7 +5,7 @@ class Schedule extends React.Component {
     render() {
         return (
             <div>
-                <Headings data="Schedule"/>
+                <Headings data="Schedule" date_type={true}/>
             </div>
         );
     }
