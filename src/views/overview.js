@@ -1,3 +1,4 @@
+import { Divider } from '@material-ui/core';
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
@@ -13,7 +14,6 @@ class Overview extends React.Component {
         const reminders = [
             { id: 1, title: 'Reminder 1', time: 'Time 1' },
             { id: 2, title: 'Reminder 2', time: 'Time 2' },
-            { id: 3, title: 'Reminder 2', time: 'Time 2' },
         ]
         const meetings = [
             { id: 1, title: 'Meeting 1', time: 'Time 1' },
@@ -30,13 +30,14 @@ class Overview extends React.Component {
                         <Col>
                             <Headings data="MEETINGS & REMINDERS"/>
                             {reminders.map((reminder) => (
-                                <IndividualItems reminder type="reminder"/>
+                                <IndividualItems data={reminder} type="reminder"/>
                             ))}
+                            <Divider style={{ backgrondColor: '#adb5bd'}}/>
                             {meetings.map((meeting) => (
-                                <IndividualItems meeting type="meeting" />
+                                <IndividualItems data={meeting} type="meeting" />
                             ))}
                         </Col>
-                        <Col>
+                        <Col xs lg="5">
                             <Container>
                                 <Row>
                                     <Col>
@@ -83,7 +84,7 @@ function Example(props) {
     return (
         <div style={{ marginBottom: 40 }}>
             <div style={{ marginTop: 30, display: "flex" }}>
-                <div style={{ width: "30%", margin: 'auto'}}>{props.children}</div>
+                <div style={{ width: "45%", margin: 'auto'}}>{props.children}</div>
             </div>
         </div>
     );
