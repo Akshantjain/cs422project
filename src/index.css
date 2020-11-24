@@ -11,3 +11,80 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navRow{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+}
+
+.navRow > a:not(.IconButton) {
+  margin: auto;
+  width: 200px;
+  
+}
+
+.date_section {
+  padding: 8px 20px 8px 20px;
+  margin: auto;
+  display: flex;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+}
+
+.individualItem p {
+  padding: 0px 12px;
+  border: solid black 1px;
+  margin: 12px 0px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.individualItem p > span {
+  padding: 8px 12px;
+}
+
+.individualItem p>span:first-child {
+  margin-right: auto;
+}
+
+.individualItem p>span:not(:first-child) {
+  border-left: solid black 1px;
+}
+
+
+.individualItem p:hover {
+box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+cursor: pointer;
+}
+
+.individualItem button {
+  margin: 0px 10px ;
+}
+
+.reminder {
+  background-color: #007bff5e;
+}
+
+.meeting {
+  background-color: antiquewhite;
+}
+
+.goal {
+background-color: #d8d3ff;
+}
+
+.checklist {
+  background-color: rgb(184, 255, 252);
+}
+
+.EditDialogBox > p {
+  display: flex;
+}
+
+.EditDialogBox p > span {
+  margin-left: auto;
+}
+
+.EditDialogBox hr {
+  margin: 0px 0px 15px 0px;
+}
