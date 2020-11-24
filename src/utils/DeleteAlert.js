@@ -16,17 +16,17 @@ export default function DeleteAlert(props) {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">Delete {props.type}?</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Are you sure you want to delete?
+                        Are you sure you want to delete this {props.type}?
                 </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.handleClose} color="primary">
                         No
                     </Button>
-                    <Button onClick={props.handleClose} color="primary" autoFocus>
+                    <Button onClick={props.handleDelete} color="primary" autoFocus>
                         Yes
                     </Button>
                 </DialogActions>

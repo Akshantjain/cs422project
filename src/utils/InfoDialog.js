@@ -51,20 +51,30 @@ const DialogActions = withStyles((theme) => ({
 
 export default function InfoDialog(props) {
 
+    const handleEdit = (e) => {
+        props.handleEdit(e);
+        props.handleClose();
+    }
+
+    const handleDelete = (e) => {
+        props.handleDelete(e)
+        props.handleClose();
+    }
+
     return (
         <div>
-            <Dialog onClose={props.handleClose} aria-labelledby="customized-dialog-title" open={props.open}>
+            <Dialog maxWidth='sm' fullWidth={true} onClose={props.handleClose} aria-labelledby="customized-dialog-title" open={props.open}>
                 <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
                     {props.data.title}
                 </DialogTitle>
-                <DialogContent dividers>
+                <DialogContent className="EditDialogBox" dividers>
                     {props.children}
                 </DialogContent>
                 <DialogActions>
-                    <Button id={props.data.id} type={props.type} onClick={props.handleEdit} color="primary">
+                    <Button id={props.data.id} type={props.type} onClick={handleEdit} color="primary">
                         EDIT
                     </Button>
-                    <Button id={props.data.id} type={props.type} onClick={props.handleDelete} color="primary">
+                    <Button id={props.data.id} type={props.type} onClick={handleDelete} color="primary">
                         DELETE
                     </Button>
                     <Button onClick={props.handleClose} color="primary">

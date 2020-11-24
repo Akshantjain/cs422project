@@ -11,8 +11,8 @@ export default function EditDialog(props) {
 
     return (
         <div>
-            <Dialog open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            <Dialog maxWidth='sm' fullWidth={true} open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Edit {props.type}</DialogTitle>
                 <DialogContent>
                     {props.children}
                 </DialogContent>

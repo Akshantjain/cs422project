@@ -1,9 +1,10 @@
-import { Container, IconButton } from '@material-ui/core'
+import { Container, Divider, IconButton, Typography } from '@material-ui/core'
 import { AddCircleOutlineOutlined, InfoOutlined, RemoveCircleOutlineOutlined } from '@material-ui/icons';
 import React, { Component } from 'react'
 import InfoDialog from './InfoDialog';
 
 export class IndividualItems extends Component {
+
     render() {
         return (
             <div>
@@ -40,14 +41,33 @@ function Reminder(props) {
             <div className=" individualItem" onClick={handleClickOpen}>
                 <p className="reminder">
                     <span>
-                        {props.data.title}
+                        {props.data.title} {props.data.repeat}
+                    </span>
+                    <span>
+                        {props.data.date}
                     </span>
                     <span>
                         {props.data.time}
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} >
+                <Typography >
+                    <b>Title:</b> <span> {props.data.title} </span> 
+                </Typography>
+                <Divider/>
+                <Typography >
+                    <b>Date & Time:</b> <span> {props.data.date}, {props.data.time}</span>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Repeat Type:</b > <span> {props.data.repeat} </span> 
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Description:</b > <span> {props.data.description} </span> 
+                </Typography>
+            </InfoDialog>
         </>
     );
 }
@@ -67,14 +87,33 @@ function Meeting(props) {
             <div className="individualItem" onClick={handleClickOpen}>
                 <p className="meeting">
                     <span>
-                        {props.data.title}
+                        {props.data.title} {props.data.repeat}
+                    </span>
+                    <span>
+                        {props.data.date}
                     </span>
                     <span>
                         {props.data.time}
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} >
+                <Typography >
+                    <b>Title:</b> <span> {props.data.title} </span>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Date & Time:</b> <span> {props.data.date}, {props.data.time}</span>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Repeat Type:</b> <span> {props.data.repeat} </span>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Description:</b> <span> {props.data.description} </span>
+                </Typography>
+            </InfoDialog>
         </>
     );
 }
@@ -89,20 +128,20 @@ function Goal(props) {
         setOpen(false);
     };
 
-    const handleIncrease = () => {
-
+    const handleIncrease = (e) => {
+        props.handleIncrease(props.data.current + props.data.change, props.data.id);
     }
 
-    const handleDecrease = () => {
-
+    const handleDecrease = (e) => {
+        props.handleIncrease(props.data.current - props.data.change, props.data.id);
     }
     return (
         <>
             <div className="individualItem ">
                 <p className="goal">
-                    <span>
+                    <span onClick={handleClickOpen}>
                         {props.data.title} {' '}
-                        {props.data.type}
+                        {props.data.repeat}
                     </span>
                     <span>
                         <IconButton aria-label="increase" size="small" onClick={handleIncrease}>
@@ -120,7 +159,28 @@ function Goal(props) {
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} >
+                <Typography >
+                    <b>Title:</b> <span> {props.data.title} </span>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Repeat Type:</b> <span> {props.data.repeat} </span>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Current: </b>
+                    <> {props.data.current} </>
+                    <span><b>Target:</b> </span>
+                    <> {props.data.target} </>
+                    <span><b>Increment/Decrement Change:</b></span> 
+                    <> {props.data.change} </>
+                </Typography>
+                <Divider />
+                <Typography >
+                    <b>Description:</b> <span> {props.data.description} </span>
+                </Typography>
+            </InfoDialog>
         </>
     );
 }
@@ -142,7 +202,9 @@ function Checklist(props) {
                     <span>
                         {props.data.title}
                     </span>
-
+                    <span>
+                        No of Items: {props.data.noOfItems}
+                    </span>
                     <span>
                         <IconButton aria-label="increase" size="small" onClick={handleClickOpen}>
                             <InfoOutlined size="small" />
@@ -150,7 +212,29 @@ function Checklist(props) {
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} >
+                <Typography>
+                    <b>Title: </b> <span>{props.data.title}</span>
+                </Typography>
+                <Divider /><Typography>
+                    <b>Description: </b> <span>{props.data.description}</span>
+                </Typography>
+                <Divider />
+                <Typography>
+                    <b>Checklist Items:</b>
+                </Typography>
+                {props.data.items.map((eachItem) => (
+                    <Typography style={{paddingLeft: '25px'}}>
+                        <li key={eachItem.id}>
+                            {eachItem.status ?
+                                <strike>{eachItem.title}</strike>
+                                : <span>{eachItem.title}</span>
+                            }
+                            
+                        </li>
+                    </Typography>
+                ))}
+            </InfoDialog>
         </>
     );
 }
