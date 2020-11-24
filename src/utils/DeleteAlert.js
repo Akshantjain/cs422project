@@ -6,13 +6,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function DeleteAlert() {
+export default function DeleteAlert(props) {
 
     return (
         <div>
             <Dialog
-                open={this.props.open}
-                onClose={this.props.handleClose}
+                open={props.open}
+                onClose={props.handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -23,10 +23,10 @@ export default function DeleteAlert() {
                 </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.props.handleClose} color="primary">
+                    <Button onClick={props.handleClose} color="primary">
                         No
                     </Button>
-                    <Button onClick={this.props.handleClose} color="primary" autoFocus>
+                    <Button onClick={props.handleClose} color="primary" autoFocus>
                         Yes
                     </Button>
                 </DialogActions>

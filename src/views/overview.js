@@ -6,21 +6,9 @@ import Headings from '../utils/headings'
 import IndividualItems from '../utils/IndividualItems';
 
 
-
-
 class Overview extends React.Component {
-    
+
     render() {
-        const reminders = [
-            { id: 1, title: 'Reminder 1', time: 'Time 1' },
-            { id: 2, title: 'Reminder 2', time: 'Time 2' },
-        ]
-        const meetings = [
-            { id: 1, title: 'Meeting 1', time: 'Time 1' },
-            { id: 2, title: 'Meeting 2', time: 'Time 2' },
-            { id: 3, title: 'Meeting 3', time: 'Time 3' },
-            { id: 4, title: 'Meeting 4', time: 'Time 4' }
-        ];
 
         return (
             <div>
@@ -29,12 +17,25 @@ class Overview extends React.Component {
                     <Row>
                         <Col>
                             <Headings data="MEETINGS & REMINDERS"/>
-                            {reminders.map((reminder) => (
-                                <IndividualItems data={reminder} type="reminder"/>
+                            {this.props.reminders.map((reminder) => (
+                                <IndividualItems 
+                                    {...this.props}
+                                    data={reminder}
+                                    key={reminder.id}
+                                    type="reminder"
+                                    
+                                />
                             ))}
+
                             <Divider style={{ backgrondColor: '#adb5bd'}}/>
-                            {meetings.map((meeting) => (
-                                <IndividualItems data={meeting} type="meeting" />
+
+                            {this.props.meetings.map((meeting) => (
+                                <IndividualItems
+                                    {...this.props}
+                                    data={meeting} 
+                                    key={meeting.id} 
+                                    type="meeting" 
+                                />
                             ))}
                         </Col>
                         <Col xs lg="5">

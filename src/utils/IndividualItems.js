@@ -34,14 +34,6 @@ function Reminder(props) {
     const handleClose = () => {
         setOpen(false);
     };
-    const handleEdit = () => {
-        handleClose();
-        props.handleEdit();
-    }
-    const handleDelete = () => {
-        handleClose();
-        props.handleDelete();
-    }
     
     return(
         <>
@@ -55,7 +47,7 @@ function Reminder(props) {
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} />
         </>
     );
 }
@@ -69,14 +61,6 @@ function Meeting(props) {
     const handleClose = () => {
         setOpen(false);
     };
-    const handleEdit = () => {
-        handleClose();
-        props.handleEdit();
-    }
-    const handleDelete = () => {
-        handleClose();
-        props.handleDelete();
-    }
 
     return (
         <>
@@ -90,7 +74,7 @@ function Meeting(props) {
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} />
         </>
     );
 }
@@ -104,14 +88,6 @@ function Goal(props) {
     const handleClose = () => {
         setOpen(false);
     };
-    const handleEdit = () => {
-        handleClose();
-        props.handleEdit();
-    }
-    const handleDelete = () => {
-        handleClose();
-        props.handleDelete();
-    }
 
     const handleIncrease = () => {
 
@@ -144,7 +120,7 @@ function Goal(props) {
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} />
         </>
     );
 }
@@ -158,14 +134,6 @@ function Checklist(props) {
     const handleClose = () => {
         setOpen(false);
     };
-    const handleEdit = () => {
-        handleClose();
-        props.handleEdit();
-    }
-    const handleDelete = () => {
-        handleClose();
-        props.handleDelete();
-    }
 
     return (
         <>
@@ -182,7 +150,7 @@ function Checklist(props) {
                     </span>
                 </p>
             </div>
-            <InfoDialog {...props} handleClose={handleClose} handleEdit={handleEdit} handleDelete={handleDelete} open={open} />
+            <InfoDialog {...props} handleClose={handleClose} open={open} />
         </>
     );
 }

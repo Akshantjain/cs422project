@@ -61,10 +61,10 @@ export default function InfoDialog(props) {
                     {props.children}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={props.handleEdit} color="primary">
+                    <Button id={props.data.id} type={props.type} onClick={props.handleEdit} color="primary">
                         EDIT
                     </Button>
-                    <Button onClick={props.handleDelete} color="primary">
+                    <Button id={props.data.id} type={props.type} onClick={props.handleDelete} color="primary">
                         DELETE
                     </Button>
                     <Button onClick={props.handleClose} color="primary">

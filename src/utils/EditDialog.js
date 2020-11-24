@@ -7,20 +7,20 @@ import DialogContent from '@material-ui/core/DialogContent';
 // import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function EditDialog() {
+export default function EditDialog(props) {
 
     return (
         <div>
-            <Dialog open={this.props.open} onClose={this.props.handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                 <DialogContent>
-                    {this.props.children}
+                    {props.children}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.props.handleClose} color="primary">
+                    <Button onClick={props.handleClose} color="primary">
                         CANCEL
                     </Button>
-                    <Button onClick={this.props.handleSave} color="primary">
+                    <Button onClick={props.handleSave} color="primary">
                         SAVE
                     </Button>
                 </DialogActions>
